@@ -8,7 +8,24 @@
         .container {
             max-width: 560px;
         } </style>
+    <script type="text/javascript">
+        function call_confirm_static(){
+            if(confirm("삭제하시겠습니까?")){
+                alert("정상적으로 삭제되었습니다.");
+                return "delete();"
+            }else{
+                alert("삭제 취소");
 
+            }
+        }
+        function call_confirm_server(itemId) {
+            if(confirm('삭제하시겠습니까?')) {
+                window.location.href='/basic/items';
+            } else {
+                alert('삭제 취소');
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="container">
@@ -57,6 +74,13 @@
                     th:onclick="|location.href='@{/basic/items}'|"
                     type="button">목록으로</button>
         </div>
+        <form class="col"
+              th:action="@{/basic/items/{itemId}/delete(itemId=${item.id})}"
+              action="items.html"
+              method="post"
+              onsubmit="return confirm('삭제하시겠습니까?');">
+            <button type="submit" class="w-100 btn btn-danger btn-lg">삭제</button>
+        </form>
     </div>
 </div> <!-- /container -->
 </body>

@@ -32,11 +32,18 @@ public class BasicItemController {
         return "basic/item";
     }
 
+    /////// 삭제 기능 추가
+    @PostMapping("/{itemId}/delete")
+    public String delete(@PathVariable("itemId") Long itemId) {
+        itemRepository.deleteItem(itemId);
+        return "redirect:/basic/items";
+    }
+
+
     @GetMapping("/add")
     public String addForm() {
         return "basic/addForm";
     }
-
 
 //    @PostMapping("/add")
     public String addItemV1(@RequestParam String itemName,
@@ -111,8 +118,6 @@ public class BasicItemController {
         return "redirect:/basic/items/{itemId}";
 //        return "basic/item"; // redirect로 해야 함
     }
-
-
 
     /**
      * 테스트용 데이터 추가

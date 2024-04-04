@@ -7,6 +7,18 @@
         .container {
             max-width: 560px;
         } </style>
+
+    <script type="text/javascript">
+        function call_confirm(){
+            if(confirm("삭제하시겠습니까?")){
+                alert("정상적으로 삭제되었습니다.");
+                location.href='items.html'
+            }else{
+                alert("삭제 취소");
+
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="container">
@@ -38,6 +50,9 @@
         </div>
         <div class="col">
             <button class="w-100 btn btn-secondary btn-lg" onclick="location.href='items.html'" type="button">목록으로</button>
+        </div>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg" onclick="call_confirm()" type="button">삭제</button>
         </div>
     </div>
 </div> <!-- /container -->
